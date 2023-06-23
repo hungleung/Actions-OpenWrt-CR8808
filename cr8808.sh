@@ -26,8 +26,8 @@ sed -i 's/"ShadowSocksR Plus+"/"SSRP+"/'  feeds/helloworld/luci-app-ssr-plus/lua
 # sed -i 's#key"'\''=//p'\''#& \| head -n1#' package/base-files/files/lib/functions/system.sh
 
 # change default package
-sed -i -e 's/dnsmasq/dnsmasq-full ddns-scripts_cloudflare.com-v4 luci-app-udpxy luci-app-wireguard luci-ssl-openssl luci-app-acme luci-app-ddns luci-app-upnp acme-dnsapi acme-deploy acme-notify /' include/target.mk
+sed -i -e 's/dnsmasq/dnsmasq-full ddns-scripts_cloudflare.com-v4 luci-app-udpxy luci-app-wireguard luci-ssl-openssl luci-app-acme luci-app-ddns luci-app-upnp acme-dnsapi luci-app-samba4 /' include/target.mk
 
-# scripts/feeds update packages
-# rm -rf54xt feeds/packages/lang/golang
-# svn co https://github.com/openwrt/packages/branches/openwrt-22.03/lang/golang feeds/packages/lang/golang
+scripts/feeds update packages
+rm -rf feeds/packages/lang/golang
+svn co https://github.com/openwrt/packages/branches/openwrt-22.03/lang/golang feeds/packages/lang/golang
