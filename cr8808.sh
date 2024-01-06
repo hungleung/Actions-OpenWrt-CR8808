@@ -1,18 +1,18 @@
 #!/bin/bash
 
 # For OpenWrt 21.02 or lower version
-# You have to manually upgrade Golang toolchain to 1.18 or higher to compile Xray-core.
-./scripts/feeds update packages
-rm -rf feeds/packages/lang/golang
-svn co https://github.com/openwrt/packages/branches/openwrt-22.03/lang/golang feeds/packages/lang/golang
+# # You have to manually upgrade Golang toolchain to 1.18 or higher to compile Xray-core.
+# ./scripts/feeds update packages
+# rm -rf feeds/packages/lang/golang
+# svn co https://github.com/openwrt/packages/branches/openwrt-22.03/lang/golang feeds/packages/lang/golang
 
 # change default lan address and hostname
 # verified to be working
-sed -i 's/192.168.1.1/192.168.88.1/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.88.4/g' package/base-files/files/bin/config_generate
 sed -i 's/OpenWrt/Home/g' package/base-files/files/bin/config_generate
 # sed -i 's/\+shellsync//' package/network/services/ppp/Makefile
 # sed -i 's/\+kmod-mppe//' package/network/services/ppp/Makefile
-sed -i 's/"ShadowSocksR Plus+"/"SSRP+"/'  feeds/helloworld/luci-app-ssr-plus/luasrc/controller/shadowsocksr.lua
+# sed -i 's/"ShadowSocksR Plus+"/"SSRP+"/'  feeds/helloworld/luci-app-ssr-plus/luasrc/controller/shadowsocksr.lua
 
 # disable and remove wireless
 # sed -i 's/\+libiwinfo-lua//' feeds/luci/collections/luci/Makefile
@@ -26,7 +26,7 @@ sed -i 's/"ShadowSocksR Plus+"/"SSRP+"/'  feeds/helloworld/luci-app-ssr-plus/lua
 # sed -i 's#key"'\''=//p'\''#& \| head -n1#' package/base-files/files/lib/functions/system.sh
 
 # change default package
-sed -i -e 's/dnsmasq/dnsmasq-full ddns-scripts_cloudflare.com-v4 luci-app-udpxy luci-app-wireguard luci-ssl-openssl luci-app-acme luci-app-ddns luci-app-upnp acme-dnsapi luci-app-samba4 luci-app-ssr-plus/' include/target.mk
+sed -i -e 's/dnsmasq/dnsmasq-full luci-app-ddns ddns-scripts_cloudflare.com-v4 luci-app-udpxy luci-app-wireguard luci-ssl-openssl luci-app-acme luci-app-ddns luci-app-upnp acme-dnsapi luci-app-samba4 nano htop curl wget/' include/target.mk
 
 # scripts/feeds update packages
 # rm -rf feeds/packages/lang/golang
