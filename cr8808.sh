@@ -26,7 +26,7 @@ sed -i 's/OpenWrt/Home/g' package/base-files/files/bin/config_generate
 # sed -i 's#key"'\''=//p'\''#& \| head -n1#' package/base-files/files/lib/functions/system.sh
 
 # change default package
-sed -i -e 's/dnsmasq/dnsmasq-full luci/' include/target.mk
+sed -i -e 's/dnsmasq/dnsmasq luci/' include/target.mk
 
 # scripts/feeds update packages
 # rm -rf feeds/packages/lang/golang
